@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CookBook App — Wireframes</title>
+<style>
+  :root{
+    --bg:#f5f5f4; --paper:#ffffff; --ink:#1c1917; --muted:#57534e;
+    --line:#a8a29e; --box:#e7e5e4; --box-ink:#57534e; --accent:#292524;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--ink); font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif; padding:40px 24px 80px;}
+  .wrap{max-width:1100px; margin:0 auto;}
+  h1{font-size:28px; margin-bottom:8px;}
+  h2{font-size:20px; margin:48px 0 4px; padding-top:24px; border-top:2px solid var(--line);}
+  .sub{color:var(--muted); margin-bottom:16px; font-size:14px;}
+  .intro p{max-width:75ch; margin-bottom:8px;}
+  .legend{display:flex; flex-wrap:wrap; gap:16px; margin:16px 0 8px;}
+  .legend span{display:inline-flex; align-items:center; gap:6px; font-size:13px; color:var(--muted);}
+  .sw{width:26px; height:16px; border-radius:4px; display:inline-block; flex:none;}
+  .sw-ph{background:var(--box); border:1.5px dashed var(--line);}
+  .sw-btn{background:var(--accent); border-radius:4px;}
+  .sw-badge{width:auto; padding:0 8px; height:18px; background:var(--box); border:1px solid var(--line); color:var(--box-ink); font-size:11px; font-weight:700; border-radius:999px;}
+  .frame{background:var(--paper); border:1px solid var(--line); border-radius:10px; margin:16px 0; overflow:hidden; align-self:stretch;}
+  .frame-head{display:flex; align-items:center; gap:10px; padding:10px 16px; border-bottom:1px solid var(--line); background:#fafaf9; font-size:13px; color:var(--muted);}
+  .route{font:600 12px ui-monospace,Menlo,monospace; background:var(--accent); color:#fff; padding:3px 10px; border-radius:999px; white-space:nowrap;}
+  .screen{padding:20px;}
+  .frames{display:flex; flex-wrap:wrap; gap:20px; align-items:flex-start;}
+  .frame.m{flex:0 0 375px; max-width:375px;}
+  .frame.d{flex:1 1 480px; max-width:640px; min-width:320px;}
+  .tag{display:inline-flex; align-items:center; justify-content:center; width:17px; height:17px; border-radius:999px; background:var(--accent); color:#fff; font-size:10px; font-weight:700; vertical-align:middle; margin-left:4px; flex:none;}
+  .notes{list-style:none; margin:12px 4px 4px 2px;}
+  .notes li{font-size:13px; color:var(--muted); margin-bottom:5px; padding-left:26px; position:relative;}
+  .notes li::before{content:attr(data-n); position:absolute; left:0; top:1px; width:17px; height:17px; border-radius:999px; background:var(--accent); color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center;}
+  .ph{border:1.5px dashed var(--line); background:var(--box); color:var(--box-ink); border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:12px; min-height:24px;}
+  .ph-img{height:110px;}
+  .btn{display:inline-block; border-radius:6px; padding:7px 14px; font-size:13px; font-weight:600; border:1px solid var(--accent); background:transparent; color:var(--ink); white-space:nowrap;}
+  .btn-primary{background:var(--accent); color:#fff;}
+  .badge{display:inline-flex; align-items:center; justify-content:center; min-width:18px; height:18px; padding:0 6px; border-radius:999px; background:var(--box); border:1px solid var(--line); color:var(--box-ink); font-size:11px; font-weight:700;}
+  .input{display:flex; align-items:center; gap:8px; border:1px solid var(--line); border-radius:6px; padding:8px 12px; font-size:13px; color:var(--muted); background:#fff;}
+  .card{border:1px solid var(--line); border-radius:8px; background:#fff; padding:12px;}
+  .grid{display:grid; gap:12px;} .g2{grid-template-columns:repeat(2,1fr);} .g3{grid-template-columns:repeat(3,1fr);} .g4{grid-template-columns:repeat(4,1fr);}
+  .row{display:flex; gap:10px; align-items:center; flex-wrap:wrap;}
+  .space{height:14px;} .space-lg{height:24px;}
+  .bar{display:flex; align-items:center; justify-content:space-between; min-height:48px; border-bottom:1px solid var(--line); padding:0 14px;}
+  .logo{font-weight:800; font-size:16px;}
+  .nav{display:flex; gap:18px; font-size:13px; color:var(--muted); align-items:center;}
+  .burger{width:30px; height:30px; border:1px solid var(--line); border-radius:6px; display:inline-flex; align-items:center; justify-content:center; font-size:15px;}
+  .progress{height:8px; border-radius:999px; background:var(--box); position:relative; overflow:hidden;}
+  .progress i{position:absolute; top:0; bottom:0; left:0; width:35%; background:var(--accent); display:block;}
+  .chk{width:16px; height:16px; border:1.5px solid var(--line); border-radius:4px; display:inline-block; flex:none;}
+  .chk.on{background:var(--accent); border-color:var(--accent);}
+  .icon-b{width:26px; height:26px; border:1.5px dashed var(--line); border-radius:6px; display:inline-flex; align-items:center; justify-content:center; font-size:12px; color:var(--box-ink); flex:none;}
+  .spin{width:30px; height:30px; border:3px solid var(--box); border-top-color:var(--accent); border-radius:50%; margin:24px auto;}
+  table{width:100%; border-collapse:collapse; font-size:14px; background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+  th,td{text-align:left; padding:9px 14px; border-bottom:1px solid #e7e5e4; vertical-align:top;}
+  th{background:#fafaf9; font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted);}
+  code{font:13px ui-monospace,Menlo,monospace; background:var(--box); padding:1px 6px; border-radius:4px;}
+  .skel{background:var(--box); border-radius:6px; height:20px;}
+  .center{text-align:center;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="intro">
+  <h1>CookBook App — wireframe prototype</h1>
+  <p>Grey boxes are placeholders, not visual design. This self-contained file documents every screen, state and behavior of the app so it can be rebuilt without the original source or a design tool.</p>
+  <div class="legend">
+    <span><i class="sw sw-ph"></i> placeholder (image / text)</span>
+    <span><i class="sw sw-btn"></i> primary button</span>
+    <span><i class="sw sw-badge">n</i> live count badge</span>
+    <span><span class="tag">1</span> numbered annotation — see notes under each frame</span>
+  </div>
+</header>
+
+<h2>Pages &amp; routes</h2>
+<p class="sub">Client-side routing. Unknown paths render the 404 page.</p>
+<table>
+  <tr><th>Route</th><th>Page</th><th>Content</th></tr>
+  <tr><td><code>/</code></td><td>Home</td><td>Recipe of the day + category grid</td></tr>
+  <tr><td><code>/categories/:name</code></td><td>Category</td><td>Recipes in a category, client-side filter</td></tr>
+  <tr><td><code>/recipes/:id</code></td><td>Recipe</td><td>Full recipe details</td></tr>
+  <tr><td><code>/search?q=…</code></td><td>Search</td><td>Results for a recipe name (server-side search)</td></tr>
+  <tr><td><code>/favorites</code></td><td>Favorites</td><td>Saved recipes (localStorage)</td></tr>
+  <tr><td><code>/shopping-list</code></td><td>Shopping list</td><td>Ingredients grouped by recipe (localStorage)</td></tr>
+  <tr><td><code>*</code></td><td>Not found</td><td>404 page</td></tr>
+</table>
+
+<h2>Shared header</h2>
+<p class="sub">Present on every page.</p>
+<div class="frames">
+  <div class="frame d">
+    <div class="frame-head"><span class="route">desktop</span> width ≥ 768px</div>
+    <div class="screen" style="padding:0">
+      <div class="bar">
+        <span class="logo">CookBook</span>
+        <nav class="nav">Home&ensp;Favorites <span class="badge">3</span>&ensp;Shopping list <span class="badge">5</span></nav>
+      </div>
+    </div>
+    <ul class="notes">
+      <li data-n="1">Logo links to <code>/</code>.</li>
+      <li data-n="2">Badges show live counts (favorites, shopping-list items) and update as the user adds, checks off or removes items.</li>
+    </ul>
+  </div>
+  <div class="frame m">
+    <div class="frame-head"><span class="route">mobile</span> width &lt; 768px</div>
+    <div class="screen" style="padding:0">
+      <div class="bar">
+        <span class="logo">CookBook</span>
+        <span class="burger">≡</span>
+      </div>
+    </div>
+    <ul class="notes">
+      <li data-n="1">Menu button opens a slide-in panel — see “Mobile menu” under Shared states.</li>
+    </ul>
+  </div>
+</div>
+<h2>Home — <code>/</code></h2>
+<div class="frames">
+  <div class="frame d">
+    <div class="frame-head"><span class="route">/</span> desktop</div>
+    <div class="screen">
+      <div class="row" style="justify-content:space-between; align-items:flex-start;">
+        <div style="flex:1; min-width:200px;">
+          <div style="font-size:17px; font-weight:700; margin-bottom:6px;">Recipe of the day</div>
+          <div style="color:var(--muted); font-size:13px; max-width:44ch;">A different random recipe on every visit. Save it to your favorites or jump straight into the full details.</div>
+        </div>
+        <div class="card" style="flex:1; min-width:220px; padding:0; overflow:hidden;">
+          <div class="ph ph-img" style="border-radius:0; border-left:0; border-right:0;">meal image</div>
+          <div style="padding:12px;">
+            <div style="font-weight:700; margin-bottom:10px;">Recipe name<span class="tag">1</span></div>
+            <div class="row">
+              <span class="btn btn-primary">View recipe</span>
+              <span class="btn">♥ Add to favorites</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="space-lg"></div>
+      <div style="font-size:17px; font-weight:700; margin-bottom:10px;">Browse by category</div>
+      <div class="grid g4">
+        <div class="card" style="padding:0; overflow:hidden;"><div class="ph ph-img" style="border-radius:0; border-left:0; border-right:0; height:70px;">image</div><div style="padding:8px; font-size:13px; font-weight:600;">Seafood</div></div>
+        <div class="card" style="padding:0; overflow:hidden;"><div class="ph ph-img" style="border-radius:0; border-left:0; border-right:0; height:70px;">image</div><div style="padding:8px; font-size:13px; font-weight:600;">Dessert</div></div>
+        <div class="card" style="padding:0; overflow:hidden;"><div class="ph ph-img" style="border-radius:0; border-left:0; border-right:0; height:70px;">image</div><div style="padding:8px; font-size:13px; font-weight:600;">Starter</div></div>
+        <div class="ph" style="height:70px; align-self:start;">…</div>
+      </div>
+    </div>
+    <ul class="notes">
+      <li data-n="1">Card content comes from a random recipe, fetched fresh on every visit.</li>
+      <li data-n="2">The whole category card is a link to <code>/categories/:name</code>; the name sits under the image.</li>
+      <li data-n="3">Category grid: 4 columns on desktop, 2 on mobile.</li>
+    </ul>
+  </div>
+  <div class="frame m">
+    <div class="frame-head"><span class="route">/</span> mobile</div>
+    <div class="screen">
+      <div style="font-size:17px; font-weight:700; margin-bottom:6px;">Recipe of the day</div>
+      <div style="color:var(--muted); font-size:13px; margin-bottom:12px;">A different random recipe on every visit…</div>
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div class="ph ph-img" style="border-radius:0; border-left:0; border-right:0;">meal image</div>
+        <div style="padding:12px;">
+          <div style="font-weight:700; margin-bottom:10px;">Recipe name</div>
+          <div class="row"><span class="btn btn-primary">View recipe</span><span class="btn">♥ Add to favorites</span></div>
+        </div>
+      </div>
+      <div class="space-lg"></div>
+      <div style="font-size:17px; font-weight:700; margin-bottom:10px;">Browse by category</div>
+      <div class="grid g2">
+        <div class="card" style="padding:0; overflow:hidden;"><div class="ph ph-img" style="border-radius:0; border-left:0; border-right:0; height:70px;">image</div><div style="padding:8px; font-size:13px; font-weight:600;">Seafood</div></div>
+        <div class="card" style="padding:0; overflow:hidden;"><div class="ph ph-img" style="border-radius:0; border-left:0; border-right:0; height:70px;">image</div><div style="padding:8px; font-size:13px; font-weight:600;">Dessert</div></div>
+      </div>
+    </div>
+    <ul class="notes">
+      <li data-n="1">“Recipe of the day” stacks: text on top, card below.</li>
+      <li data-n="2">Category grid becomes 2 columns.</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Category — <code>/categories/:name</code></h2>
+<div class="frames">
+  <div class="frame d">
+    <div class="frame-head"><span class="route">/categories/Seafood</span> desktop</div>
+    <div class="screen">
+      <div style="font-size:20px; font-weight:700; margin-bottom:12px;">Seafood</div>
+      <div class="input" style="max-width:340px;">🔍 Filter recipes…<span class="tag">1</span></div>
+      <div class="space-lg"></div>
+      <div class="grid g3">
+        <div class="card" style="padding:0; overflow:hidden;"><div class="ph ph-img" style="border-radius:0; border-left:0; border-right:0;">image</div><div style="padding:10px; font-size:13px; font-weight:600;">Recipe name</div></div>
+        <div class="card" style="padding:0; overflow:hidden;"><div class="ph ph-img" style="border-radius:0; border-left:0; border-right:0;">image</div><div style="padding:10px; font-size:13px; font-weight:600;">Recipe name</div></div>
+        <div class="ph">…</div>
+      </div>
+    </div>
+    <ul class="notes">
+      <li data-n="1">Filter is client-side only: it filters the already-loaded recipe names, no new request.</li>
+      <li data-n="2">Each card links to <code>/recipes/:id</code>.</li>
+      <li data-n="3">Unknown category or no recipes → empty state (see Shared states).</li>
+    </ul>
+  </div>
+  <div class="frame m">
+    <div class="frame-head"><span class="route">/categories/Seafood</span> mobile</div>
+    <div class="screen">
+      <div style="font-size:20px; font-weight:700; margin-bottom:12px;">Seafood</div>
+      <div class="input">🔍 Filter recipes…</div>
+      <div class="space-lg"></div>
+      <div class="grid g2">
+        <div class="card" style="padding:0; overflow:hidden;"><div class="ph ph-img" style="border-radius:0; border-left:0; border-right:0; height:80px;">image</div><div style="padding:10px; font-size:13px; font-weight:600;">Recipe name</div></div>
+        <div class="card" style="padding:0; overflow:hidden;"><div class="ph ph-img" style="border-radius:0; border-left:0; border-right:0; height:80px;">image</div><div style="padding:10px; font-size:13px; font-weight:600;">Recipe name</div></div>
+      </div>
+    </div>
+    <ul class="notes">
+      <li data-n="1">Recipe grid becomes 2 columns.</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Search — <code>/search?q=…</code></h2>
+<div class="frames">
+  <div class="frame d">
+    <div class="frame-head"><span class="route">/search?q=pasta</span> desktop</div>
+    <div class="screen">
+      <div class="row" style="max-width:420px;">
+        <div class="input" style="flex:1;">🔍 Recipe name</div>
+        <span class="btn btn-primary">Search</span>
+      </div>
+      <div style="font-size:12px; color:var(--muted); margin-top:6px; max-width:420px;">Enter a recipe name.<span class="tag">2</span></div>
+      <div class="space-lg"></div>
+      <div style="font-size:17px; font-weight:700; margin-bottom:10px;">Results for “pasta”</div>
+      <div class="grid g3">
+        <div class="card" style="padding:0; overflow:hidden;"><div class="ph ph-img" style="border-radius:0; border-left:0; border-right:0;">image</div><div style="padding:10px; font-size:13px; font-weight:600;">Recipe name</div></div>
+        <div class="card" style="padding:0; overflow:hidden;"><div class="ph ph-img" style="border-radius:0; border-left:0; border-right:0;">image</div><div style="padding:10px; font-size:13px; font-weight:600;">Recipe name</div></div>
+        <div class="ph">…</div>
+      </div>
+    </div>
+    <ul class="notes">
+      <li data-n="1">Submitting runs a server-side name search; the query lives in the URL (<code>?q=…</code>) so the page is shareable.</li>
+      <li data-n="2">Submitting an empty query shows inline validation instead of navigating.</li>
+      <li data-n="3">No matches → empty state: “No recipes found for ‘…’”.</li>
+    </ul>
+  </div>
+</div>
+<h2>Recipe — <code>/recipes/:id</code></h2>
+<div class="frames">
+  <div class="frame d">
+    <div class="frame-head"><span class="route">/recipes/52772</span> desktop</div>
+    <div class="screen">
+      <div class="ph ph-img" style="height:180px;">recipe image</div>
+      <div class="space"></div>
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex-wrap:wrap;">
+        <div style="font-size:22px; font-weight:700;">Recipe name</div>
+        <div class="row"><span class="badge">Category</span><span class="badge">Region</span><span class="badge">tag</span><span class="badge">tag</span><span class="tag">1</span></div>
+      </div>
+      <div class="space"></div>
+      <div class="row">
+        <span class="btn btn-primary">♥ Favorite</span><span class="tag">2</span>
+        <span class="btn">+ Add to shopping list</span><span class="tag">3</span>
+      </div>
+      <div class="space-lg"></div>
+      <div class="card">
+        <div style="font-size:16px; font-weight:700; margin-bottom:10px;">Ingredients</div>
+        <div class="grid g2" style="gap:8px;">
+          <div class="row" style="justify-content:space-between;"><span class="skel" style="width:60%;"></span><span class="skel" style="width:20%;"></span></div>
+          <div class="row" style="justify-content:space-between;"><span class="skel" style="width:55%;"></span><span class="skel" style="width:20%;"></span></div>
+          <div class="row" style="justify-content:space-between;"><span class="skel" style="width:65%;"></span><span class="skel" style="width:18%;"></span></div>
+          <div class="row" style="justify-content:space-between;"><span class="skel" style="width:50%;"></span><span class="skel" style="width:22%;"></span></div>
+        </div>
+      </div>
+      <div class="space-lg"></div>
+      <div class="card">
+        <div style="font-size:16px; font-weight:700; margin-bottom:10px;">Instructions</div>
+        <div style="font-size:13px; color:var(--muted); display:flex; flex-direction:column; gap:8px;">
+          <div>1. <span class="skel" style="display:inline-block; width:80%; vertical-align:middle;"></span></div>
+          <div>2. <span class="skel" style="display:inline-block; width:70%; vertical-align:middle;"></span></div>
+          <div>3. <span class="skel" style="display:inline-block; width:75%; vertical-align:middle;"></span></div>
+        </div>
+      </div>
+    </div>
+    <ul class="notes">
+      <li data-n="1">Badges = category, cooking region and tags from the API.</li>
+      <li data-n="2">Favorite button toggles (filled heart when saved); state is shared with the Favorites page.</li>
+      <li data-n="3">Adds all of the recipe’s ingredients to the shopping list; the button reflects the “already added” state.</li>
+      <li data-n="4">Unknown recipe id → empty state.</li>
+    </ul>
+  </div>
+  <div class="frame m">
+    <div class="frame-head"><span class="route">/recipes/52772</span> mobile</div>
+    <div class="screen">
+      <div class="ph ph-img" style="height:140px;">recipe image</div>
+      <div class="space"></div>
+      <div style="font-size:20px; font-weight:700;">Recipe name</div>
+      <div class="space"></div>
+      <div class="row"><span class="badge">Category</span><span class="badge">Region</span></div>
+      <div class="space"></div>
+      <div class="row"><span class="btn btn-primary">♥ Favorite</span><span class="btn">+ Add to shopping list</span></div>
+      <div class="space-lg"></div>
+      <div class="card">
+        <div style="font-size:15px; font-weight:700; margin-bottom:8px;">Ingredients</div>
+        <div class="grid" style="gap:6px;">
+          <div class="row" style="justify-content:space-between;"><span class="skel" style="width:60%;"></span><span class="skel" style="width:20%;"></span></div>
+          <div class="row" style="justify-content:space-between;"><span class="skel" style="width:55%;"></span><span class="skel" style="width:20%;"></span></div>
+        </div>
+      </div>
+      <div class="space-lg"></div>
+      <div class="card">
+        <div style="font-size:15px; font-weight:700; margin-bottom:8px;">Instructions</div>
+        <div style="font-size:13px; color:var(--muted);">1. <span class="skel" style="display:inline-block; width:70%; vertical-align:middle;"></span></div>
+      </div>
+    </div>
+    <ul class="notes">
+      <li data-n="1">Everything stacks vertically; ingredients list is single-column (2 columns at ≥ 640px).</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Favorites — <code>/favorites</code></h2>
+<div class="frames">
+  <div class="frame d">
+    <div class="frame-head"><span class="route">/favorites</span></div>
+    <div class="screen">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+        <div style="font-size:20px; font-weight:700;">Favorites</div>
+        <span class="btn">Clear favorites</span><span class="tag">1</span>
+      </div>
+      <div class="space-lg"></div>
+      <div class="grid g3">
+        <div class="card" style="padding:0; overflow:hidden;">
+          <div class="ph ph-img" style="border-radius:0; border-left:0; border-right:0; height:90px;">image</div>
+          <div style="padding:10px;">
+            <div style="font-size:13px; font-weight:600; margin-bottom:8px;">Recipe name</div>
+            <div class="row"><span class="btn" style="padding:4px 10px; font-size:12px;">Remove</span><span class="tag">2</span></div>
+          </div>
+        </div>
+        <div class="card" style="padding:0; overflow:hidden;">
+          <div class="ph ph-img" style="border-radius:0; border-left:0; border-right:0; height:90px;">image</div>
+          <div style="padding:10px;">
+            <div style="font-size:13px; font-weight:600; margin-bottom:8px;">Recipe name</div>
+            <div class="row"><span class="btn" style="padding:4px 10px; font-size:12px;">Remove</span></div>
+          </div>
+        </div>
+        <div class="ph">…</div>
+      </div>
+    </div>
+    <ul class="notes">
+      <li data-n="1">Asks for confirmation (dialog) before clearing everything.</li>
+      <li data-n="2">Removing a card un-favorites that recipe.</li>
+      <li data-n="3">Nothing saved → empty state with a “Browse recipes” action.</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Shopping list — <code>/shopping-list</code></h2>
+<div class="frames">
+  <div class="frame d">
+    <div class="frame-head"><span class="route">/shopping-list</span></div>
+    <div class="screen">
+      <div style="font-size:20px; font-weight:700;">Shopping list</div>
+      <div class="space"></div>
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+        <div style="font-size:13px; color:var(--muted);">3 of 10 bought<span class="tag">1</span></div>
+        <div class="row">
+          <span class="btn">Clear checked</span><span class="tag">2</span>
+          <span class="btn">Clear list</span><span class="tag">3</span>
+        </div>
+      </div>
+      <div class="space"></div>
+      <div class="progress"><i></i></div>
+      <div class="space-lg"></div>
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px;">
+          <span style="font-weight:700;">Pasta alla carbonara</span><span class="tag">4</span>
+          <span class="btn" style="padding:4px 10px; font-size:12px;">Remove recipe</span><span class="tag">5</span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:8px; font-size:13px;">
+          <div class="row" style="justify-content:space-between;"><span class="row"><span class="chk on"></span> Pasta (200 g)</span><span class="icon-b">✕</span></div>
+          <div class="row" style="justify-content:space-between;"><span class="row"><span class="chk"></span> Pancetta (100 g)</span><span class="icon-b">✕</span></div>
+          <div class="row" style="justify-content:space-between;"><span class="row"><span class="chk"></span> Eggs (3)</span><span class="icon-b">✕</span></div>
+        </div>
+      </div>
+      <div class="space"></div>
+      <div class="card" style="opacity:.65; text-align:center; color:var(--muted); font-size:13px;">… another group …</div>
+    </div>
+    <ul class="notes">
+      <li data-n="1">“x of y bought” counts checked items, with a progress bar.</li>
+      <li data-n="2">“Clear checked” removes all checked items (no confirmation).</li>
+      <li data-n="3">“Clear list” wipes everything (confirmation dialog).</li>
+      <li data-n="4">Group name links to the recipe page.</li>
+      <li data-n="5">“Remove recipe” deletes the whole group; the ✕ icon deletes a single item; the checkbox marks an item as bought.</li>
+      <li data-n="6">Empty list → empty state.</li>
+    </ul>
+  </div>
+  <div class="frame m">
+    <div class="frame-head"><span class="route">/shopping-list</span> mobile</div>
+    <div class="screen">
+      <div style="font-size:20px; font-weight:700;">Shopping list</div>
+      <div class="space"></div>
+      <div style="font-size:13px; color:var(--muted);">3 of 10 bought</div>
+      <div class="space"></div>
+      <div class="progress"><i></i></div>
+      <div class="space"></div>
+      <div class="row"><span class="btn" style="font-size:12px; padding:5px 10px;">Clear checked</span><span class="btn" style="font-size:12px; padding:5px 10px;">Clear list</span></div>
+      <div class="space-lg"></div>
+      <div class="card">
+        <div style="font-weight:700; font-size:14px; margin-bottom:10px;">Pasta alla carbonara</div>
+        <div style="display:flex; flex-direction:column; gap:8px; font-size:13px;">
+          <div class="row" style="justify-content:space-between;"><span class="row"><span class="chk on"></span> Pasta (200 g)</span><span class="icon-b">✕</span></div>
+          <div class="row" style="justify-content:space-between;"><span class="row"><span class="chk"></span> Pancetta (100 g)</span><span class="icon-b">✕</span></div>
+        </div>
+      </div>
+    </div>
+    <ul class="notes">
+      <li data-n="1">Same layout, narrower; action buttons wrap under the progress.</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Not found — <code>*</code></h2>
+<div class="frames">
+  <div class="frame d">
+    <div class="frame-head"><span class="route">/any/unknown/path</span></div>
+    <div class="screen center" style="padding:56px 20px;">
+      <div style="font-size:40px; font-weight:800; color:var(--box-ink); opacity:.5;">404</div>
+      <div style="font-size:17px; font-weight:600; margin:8px 0 16px;">Page not found</div>
+      <span class="btn btn-primary">Back to home</span>
+    </div>
+    <ul class="notes">
+      <li data-n="1">Shown for any route that matches nothing.</li>
+    </ul>
+  </div>
+</div>
+<h2>Shared states</h2>
+<p class="sub">Every screen that loads data handles these four states.</p>
+<div class="frames">
+  <div class="frame d">
+    <div class="frame-head"><span class="route">loading</span> first fetch</div>
+    <div class="screen"><div class="spin"></div><div class="center" style="color:var(--muted); font-size:13px;">Centered spinner while the page’s data is fetched.</div></div>
+  </div>
+  <div class="frame d">
+    <div class="frame-head"><span class="route">loading</span> recipe grids</div>
+    <div class="screen">
+      <div class="grid g3">
+        <div class="card" style="padding:0; overflow:hidden;"><div class="ph ph-img" style="border-radius:0; border-left:0; border-right:0; border-color:transparent; background:var(--box);">skeleton</div><div style="padding:10px;"><span class="skel" style="width:70%; display:block;"></span></div></div>
+        <div class="card" style="padding:0; overflow:hidden;"><div class="ph ph-img" style="border-radius:0; border-left:0; border-right:0; border-color:transparent; background:var(--box);">skeleton</div><div style="padding:10px;"><span class="skel" style="width:60%; display:block;"></span></div></div>
+        <div class="card" style="padding:0; overflow:hidden;"><div class="ph ph-img" style="border-radius:0; border-left:0; border-right:0; border-color:transparent; background:var(--box);">skeleton</div><div style="padding:10px;"><span class="skel" style="width:65%; display:block;"></span></div></div>
+      </div>
+      <div class="center" style="color:var(--muted); font-size:13px; margin-top:10px;">Skeleton cards (×8) instead of a spinner on the home, category and search grids.</div>
+    </div>
+  </div>
+  <div class="frame d">
+    <div class="frame-head"><span class="route">error</span></div>
+    <div class="screen center" style="padding:48px 20px;">
+      <div style="font-size:15px; font-weight:600; margin-bottom:6px;">Something went wrong.</div>
+      <div style="font-size:13px; color:var(--muted); margin-bottom:14px;">User-friendly message per failure (network, server, bad data).</div>
+      <span class="btn btn-primary">Try again</span>
+    </div>
+    <ul class="notes"><li data-n="1">“Try again” re-runs the failed request.</li></ul>
+  </div>
+  <div class="frame d">
+    <div class="frame-head"><span class="route">empty</span></div>
+    <div class="screen center" style="padding:48px 20px;">
+      <div style="font-size:15px; font-weight:600; margin-bottom:6px;">Nothing here yet</div>
+      <div style="font-size:13px; color:var(--muted); margin-bottom:14px;">Explanation per page (no favorites, empty list, no search results, unknown recipe…).</div>
+      <span class="btn btn-primary">Browse recipes</span>
+    </div>
+    <ul class="notes"><li data-n="1">Optional action button points to a useful next step.</li></ul>
+  </div>
+</div>
+<div class="frames">
+  <div class="frame d">
+    <div class="frame-head"><span class="route">confirm dialog</span></div>
+    <div class="screen" style="background:rgba(0,0,0,.35);">
+      <div class="card" style="max-width:340px; margin:32px auto; box-shadow:0 8px 24px rgba(0,0,0,.15);">
+        <div style="font-weight:700; margin-bottom:6px;">Clear list?</div>
+        <div style="font-size:13px; color:var(--muted); margin-bottom:14px;">This removes all items from the shopping list.</div>
+        <div class="row" style="justify-content:flex-end;"><span class="btn">Cancel</span><span class="btn btn-primary">Clear</span></div>
+      </div>
+    </div>
+    <ul class="notes"><li data-n="1">Used before destructive bulk actions (clear favorites, clear shopping list).</li></ul>
+  </div>
+  <div class="frame m">
+    <div class="frame-head"><span class="route">mobile menu</span> slide-in sheet</div>
+    <div class="screen" style="background:rgba(0,0,0,.35); padding:0; min-height:260px;">
+      <div style="background:#fff; margin:0 0 0 auto; width:85%; min-height:260px; border-left:1px solid var(--line); padding:14px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+          <span class="logo">CookBook</span><span class="burger">✕</span>
+        </div>
+        <nav style="display:flex; flex-direction:column; gap:12px; font-size:14px;">
+          <span>Home</span>
+          <span>Favorites <span class="badge">3</span></span>
+          <span>Shopping list <span class="badge">5</span></span>
+        </nav>
+      </div>
+    </div>
+    <ul class="notes"><li data-n="1">Slides in from the right; closes on ✕, on link click or on backdrop click.</li></ul>
+  </div>
+</div>
+
+<h2>Behavior notes</h2>
+<ul class="notes">
+  <li data-n="1">No backend: favorites and the shopping list persist in localStorage; all recipe data comes from the TheMealDB API.</li>
+  <li data-n="2">“Recipe of the day” is a random recipe, fetched on every visit to the home page.</li>
+  <li data-n="3">Shopping-list items are grouped by the recipe they came from; the same ingredient added from two recipes stays in two groups.</li>
+  <li data-n="4">Header badges read the same stores, so they update live on every page.</li>
+  <li data-n="5">The category filter is client-side only; the search page queries the API by recipe name.</li>
+  <li data-n="6">Page titles follow “Title – CookBook” (e.g. “Pasta alla carbonara – CookBook”).</li>
+  <li data-n="7">Favorite state is shared: the heart on the recipe card, the recipe page button and the favorites page all reflect one store.</li>
+</ul>
+
+</div>
+</body>
+</html>
+</div>
+</body>
+</html>
